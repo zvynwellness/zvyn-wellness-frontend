@@ -1,1 +1,3 @@
-<p>hmyservice-list works!</p>
+<p *ngFor="let tempService of hmyservice">
+  {{ tempService.name }}: {{ tempService.description}}
+</p>

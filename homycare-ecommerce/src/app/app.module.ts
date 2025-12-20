@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { HmyserviceListComponent } from './components/hmyservice-list/hmyservice-list.component';
 import { HttpClientModule } from '@angular/common/http';
-import { ProductService } from './services/hmyservice.service';
+import { HmyserviceService } from './services/hmyservice.service';
 
 @NgModule({
   declarations: [
@@ -12,10 +12,10 @@ import { ProductService } from './services/hmyservice.service';
     HmyserviceListComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
     HttpClientModule
   ],
-  providers: [ProductService],
+  providers: [HmyserviceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

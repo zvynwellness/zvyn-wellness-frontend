@@ -10,11 +10,14 @@ import { map } from 'rxjs/operators';  //rxjs short form for REACT JavaScript
 export class HmyserviceService {
 
   private baseUrl = 'http://localhost:8080/api/hmyservice';
+
   constructor(private httpClient: HttpClient) { }
 
-  getProductList(): Observable<Hmyservice[]> { //Return an observable of Product array. Map the JSON data from Spring Data REST to Product array
+    getHmyserviceList(): Observable<Hmyservice[]> { //Return an observable of Product array. Map the JSON data from Spring Data REST to Product array
         return this.httpClient.get<GetResponse>(this.baseUrl).pipe( //inject HttpClient and use it to call the backend API
           map(response => response._embedded.HMYService)
+    );
+  }
 }
 
 interface GetResponse { //Unwarp the JSON from Spring Data REST _embedded entry

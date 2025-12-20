@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Hmyservice } from 'src/app/common/hmyservice';
+import { HmyserviceService } from 'src/app/services/hmyservice.service';
 
 @Component({
   selector: 'app-hmyservice-list',
@@ -7,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HmyserviceListComponent implements OnInit {
 
-  constructor() { }
+  hmyservice: Hmyservice[] = [];
+  //Inject our ProductService in the constructor
+  constructor(private hmyserviceService: HmyserviceService) { }
 
   ngOnInit(): void {
+    this.listHMYSevices();
+  }
+
+  listHMYSevices() { //Method is invoked once you subscribe
+    this.hmyserviceService.getHmyserviceList().subscribe(
+      data => {
+        this.hmyservice = data; //Assign results to the Product array
+      }
+    );
   }
 
 }
