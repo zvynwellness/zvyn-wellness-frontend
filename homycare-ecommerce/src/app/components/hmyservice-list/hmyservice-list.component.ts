@@ -4,7 +4,8 @@ import { HmyserviceService } from 'src/app/services/hmyservice.service';
 
 @Component({
   selector: 'app-hmyservice-list',
-  templateUrl: './hmyservice-list-table.component.html',
+  templateUrl: './hmyservice-list-grid.component.html',
+  //templateUrl: './hmyservice-list-table.component.html',
   //templateUrl: './hmyservice-list.component.html',
   styleUrls: ['./hmyservice-list.component.css']
 })

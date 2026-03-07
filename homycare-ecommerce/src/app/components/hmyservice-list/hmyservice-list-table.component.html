@@ -2,6 +2,7 @@
 
   <thead class="table-dark">
     <tr>
+      <th></th>
       <th>Name</th>
       <th>Description</th>
     </tr>
@@ -9,6 +10,9 @@
 
   <tbody>
     <tr *ngFor="let tempService of hmyservice">
+      <td>
+          <img src="{{ tempService.imageUrl }}" />
+      </td>
       <td>{{ tempService.name}}</td>
       <td>{{ tempService.description}}</td>
     </tr>
