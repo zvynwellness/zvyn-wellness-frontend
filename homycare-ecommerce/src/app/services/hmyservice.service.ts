@@ -13,11 +13,15 @@ export class HmyserviceService {
 
   constructor(private httpClient: HttpClient) { }
 
-    getHmyserviceList(): Observable<Hmyservice[]> { //Return an observable of Product array. Map the JSON data from Spring Data REST to Product array
-        return this.httpClient.get<GetResponse>(this.baseUrl).pipe( //inject HttpClient and use it to call the backend API
-          map(response => response._embedded.HMYService)
-    );
-  }
+    getHmyserviceList(theCategoryId: number): Observable<Hmyservice[]> {
+
+      // need to build URL based on category id
+      const searchUrl = `${this.baseUrl}/search/findByCategoryId?id=${theCategoryId}`;
+
+      return this.httpClient.get<GetResponse>(searchUrl).pipe(
+        map(response => response._embedded.HMYService)
+      );
+    }
 }
 
 interface GetResponse { //Unwarp the JSON from Spring Data REST _embedded entry

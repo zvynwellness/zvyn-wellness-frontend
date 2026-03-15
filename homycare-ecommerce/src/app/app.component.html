@@ -11,13 +11,13 @@
       <nav class="navbar-sidebar">
         <ul class="list-unstyled navbar-list">
           <li>
-            <a href="#">House Cleaning</a>
+            <a routerLink="/category/1" routerLinkActive="active-link">House Cleaning</a>
           </li>
           <li>
-            <a href="#">Gardening</a>
+            <a routerLink="/category/2" routerLinkActive="active-link">Gardening</a>
           </li>
           <li>
-            <a href="#">Babysitting</a>
+            <a routerLink="/category/3" routerLinkActive="active-link">Babysitting</a>
           </li>
         </ul>
       </nav>
@@ -53,7 +53,8 @@
     <!-- END HEADER DESKTOP-->
 
     <!-- MAIN CONTENT-->
-    <app-hmyservice-list> </app-hmyservice-list>
+    <router-outlet></router-outlet>
+    <!--  <app-hmyservice-list> </app-hmyservice-list> -->
   </div>
 </div>
 
