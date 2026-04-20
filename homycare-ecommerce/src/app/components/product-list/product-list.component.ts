@@ -1,32 +1,32 @@
 import { Component, OnInit } from '@angular/core';
-import { Hmyservice } from 'src/app/common/hmyservice';
-import { HmyserviceService } from 'src/app/services/hmyservice.service';
+import { ProductService } from 'src/app/services/product.service';
+import { Product } from 'src/app/common/product';
 import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
-  selector: 'app-hmyservice-list',
-  templateUrl: './hmyservice-list-grid.component.html',
-  //templateUrl: './hmyservice-list-table.component.html',
-  //templateUrl: './hmyservice-list.component.html',
-  styleUrls: ['./hmyservice-list.component.css']
+  selector: 'app-product-list',
+  templateUrl: './product-list-grid.component.html',
+  //templateUrl: './product-list-table.component.html',
+  //templateUrl: './product-list.component.html',
+  styleUrls: ['./product-list.component.css']
 })
-export class HmyserviceListComponent implements OnInit {
+export class ProductListComponent implements OnInit {
 
-  hmyservice: Hmyservice[] = [];
+  products: Product[] = [];
     currentCategoryId: number = 1;
 
   //Inject our ProductService in the constructor
-  constructor(private hmyserviceService: HmyserviceService,
+  constructor(private productService: ProductService,
               private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.route.paramMap.subscribe(() => {
-      this.listHMYSevices();
+      this.listProducts();
    });
   }
 
-  listHMYSevices() { //Method is invoked once you subscribe
+  listProducts() { //Method is invoked once you subscribe
     // check if "id" parameter is available
     const hasCategoryId: boolean = this.route.snapshot.paramMap.has('id');
 
@@ -39,9 +39,9 @@ export class HmyserviceListComponent implements OnInit {
       this.currentCategoryId = 1;
     }
 
-    this.hmyserviceService.getHmyserviceList(this.currentCategoryId).subscribe(
+    this.productService.getProductList(this.currentCategoryId).subscribe(
       data => {
-        this.hmyservice = data; //Assign results to the Product array
+        this.products = data; //Assign results to the Product array
       }
     );
   }

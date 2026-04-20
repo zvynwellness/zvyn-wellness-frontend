@@ -9,12 +9,12 @@
   </thead>
 
   <tbody>
-    <tr *ngFor="let tempService of hmyservice">
+    <tr *ngFor="let tempProduct of products">
       <td>
-          <img src="{{ tempService.imageUrl }}" />
+          <img src="{{ tempProduct.imageUrl }}" />
       </td>
-      <td>{{ tempService.name}}</td>
-      <td>{{ tempService.description}}</td>
+      <td>{{ tempProduct.name}}</td>
+      <td>{{ tempProduct.description}}</td>
     </tr>
   </tbody>
 </table>

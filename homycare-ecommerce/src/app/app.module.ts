@@ -2,33 +2,33 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import { HmyserviceListComponent } from './components/hmyservice-list/hmyservice-list.component';
+import { ProductListComponent } from './components/product-list/product-list.component';
 import { HttpClientModule } from '@angular/common/http';
-import { HmyserviceService } from './services/hmyservice.service';
+import { ProductService } from './services/product.service';
 
 import { Routes, RouterModule} from '@angular/router';
-import { HmyserviceCategoryMenuComponent } from './components/hmyservice-category-menu/hmyservice-category-menu.component';
+import { ProductCategoryMenuComponent } from './components/product-category-menu/product-category-menu.component';
 
 const routes: Routes = [
-  {path: 'category/:id', component : HmyserviceListComponent},
-  {path: 'category', component : HmyserviceListComponent},
-  {path: 'hmyservice', component : HmyserviceListComponent},
-  {path: '', redirectTo : '/hmyservice', pathMatch: 'full'},
-  {path: '**', redirectTo : '/hmyservice', pathMatch: 'full'}];
+  {path: 'category/:id', component : ProductListComponent},
+  {path: 'category', component : ProductListComponent},
+  {path: 'products', component : ProductListComponent},
+  {path: '', redirectTo : '/products', pathMatch: 'full'},
+  {path: '**', redirectTo : '/products', pathMatch: 'full'}];
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    HmyserviceListComponent,
-    HmyserviceCategoryMenuComponent
+    ProductListComponent,
+    ProductCategoryMenuComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
     BrowserModule,
     HttpClientModule
   ],
-  providers: [HmyserviceService],
+  providers: [ProductService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

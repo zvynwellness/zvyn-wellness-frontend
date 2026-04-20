@@ -1,4 +1,4 @@
-export class Hmyservice {
+export class Product {
 //All the properties name should matches actual JSON data that pass back from Spring Boot Service under entity/HMYService
   constructor(public name: string,
               public description: string,
