@@ -23,6 +23,19 @@ getProduct(theProductId: number): Observable<Product> {
 
     return this.httpClient.get<Product>(productUrl);
 }
+
+getProductListPaginate(thePage: number,
+                       thePageSize: number,
+                       theCategoryId: number): Observable<GetResponseProducts> {
+
+    // need to build URL based on category id, page and size
+    const searchUrl = `${this.baseUrl}/search/findByCategoryId?id=${theCategoryId}`
+                    + `&page=${thePage}&size=${thePageSize}`;
+
+    return this.httpClient.get<GetResponseProducts>(searchUrl);
+  }
+
+
 getProductList(theCategoryId: number): Observable<Product[]> {
 
     // need to build URL based on category id
@@ -38,6 +51,17 @@ getProductList(theCategoryId: number): Observable<Product[]> {
 
     return this.getProducts(searchUrl);
   }
+
+  searchProductsPaginate(thePage: number,
+                          thePageSize: number,
+                          theKeyword: string): Observable<GetResponseProducts> {
+
+      // need to build URL based on keyword, page and size
+      const searchUrl = `${this.baseUrl}/search/findByNameContaining?name=${theKeyword}`
+                      + `&page=${thePage}&size=${thePageSize}`;
+
+      return this.httpClient.get<GetResponseProducts>(searchUrl);
+   }
 
   private getProducts(searchUrl: string): Observable<Product[]> {
     return this.httpClient.get<GetResponseProducts>(searchUrl).pipe(map(response => response._embedded.products));
@@ -57,6 +81,12 @@ interface GetResponseProducts {
   _embedded: {
     products: Product[];
   }
+  page: {
+      size: number,
+      totalElements: number,
+      totalPages: number,
+      number: number
+    }
 }
 
 //Unwraps the JSON from Spring Data REST _embedded entry
