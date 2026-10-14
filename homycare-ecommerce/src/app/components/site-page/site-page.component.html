@@ -1,0 +1,72 @@
+<ng-container *ngIf="page === 'purpose'; else standardPage">
+  <div class="purpose-page">
+    <section class="purpose-hero">
+      <div class="purpose-hero-copy">
+        <p class="kicker">ABOUT ZVYN</p>
+        <h1>Wellness begins<br>by <em>listening.</em></h1>
+        <p class="lead">A considered approach to understanding your mind, body, energy, and everyday life.</p>
+      </div>
+      <div class="purpose-hero-image"><img src="assets/images/wellness/purpose-hero.jpg" alt="Serene sunlit wellness space with an ivory meditation cushion and olive branches"></div>
+    </section>
+
+    <section class="purpose-statement">
+      <h2>A purpose rooted in <em>presence.</em></h2>
+      <div class="purpose-statement-grid">
+        <h3>{{ purpose.brandPhilosophy }}</h3>
+        <p>{{ purpose.personalApproach }}</p>
+      </div>
+    </section>
+
+    <section class="care-section">
+      <div class="care-images">
+        <img class="care-portrait" src="assets/images/wellness/purpose-care.jpg" alt="Herbal tea, natural stones, linen, and greenery in warm morning light">
+        <img class="care-still-life" src="assets/images/wellness/purpose-journal.jpg" alt="Journal, tea, and olive leaves in warm morning light">
+      </div>
+      <div class="care-copy">
+        <h2>Care, tailored <em>to you.</em></h2>
+        <p>Every session is personalized, unhurried, and responsive to what you need that day. We bring movement, restoration, and mindfulness together in a way that feels grounded and sustainable.</p>
+        <blockquote>Care looks different for everyone.<br>Here, it starts with you.</blockquote>
+      </div>
+    </section>
+
+    <section class="values-section">
+      <p class="kicker">OUR VALUES</p>
+      <div class="value-grid">
+        <article><span class="value-icon" aria-hidden="true">♧</span><h3>Awareness</h3></article>
+        <article><span class="value-icon value-sun" aria-hidden="true">☼</span><h3>Consistency</h3></article>
+        <article><span class="value-icon" aria-hidden="true">≋</span><h3>Balance</h3></article>
+      </div>
+      <p class="values-note">Guided by a rhythm centered around you.</p>
+    </section>
+
+    <section class="rhythm-banner" style="background-image:linear-gradient(rgba(248,243,233,.76),rgba(248,243,233,.76)),url('assets/images/wellness/purpose-journal.jpg')">
+      <div><h2>Find your wellness <em>rhythm.</em></h2><span></span><p>A CALMER, BRIGHTER YOU AWAITS</p></div>
+    </section>
+  </div>
+</ng-container>
+
+<ng-template #standardPage>
+  <header class="page-hero">
+    <p>ZVYN WELLNESS</p>
+    <h1 *ngIf="page === 'services'">Care, made <em>personal.</em></h1>
+    <h1 *ngIf="page === 'locations'">Find your <em>place.</em></h1>
+    <h1 *ngIf="page === 'contact'">Begin with a <em>conversation.</em></h1>
+  </header>
+
+  <main class="page-body">
+    <section *ngIf="page === 'services'" class="card-grid">
+      <article *ngFor="let service of services"><span>{{ service.durationMinutes }} MINUTES</span><h2>{{ service.name }}</h2><p>{{ service.description }}</p><p class="service-location">{{ service.location || 'Location to be confirmed' }}</p><a *ngIf="service.googleMapsUrl" [href]="service.googleMapsUrl" target="_blank" rel="noopener noreferrer">Open location in Google Maps →</a><a [href]="'mailto:hello@zvynwellness.com?subject=Reserve ' + service.name">Reserve a session →</a></article>
+      <p *ngIf="!services.length" class="loading">Loading services…</p>
+    </section>
+
+    <section *ngIf="page === 'locations'" class="access-grid location-grid">
+      <article *ngFor="let service of services"><span>{{ service.durationMinutes }} MINUTES</span><h2>{{ service.name }}</h2><p>{{ service.location || 'Location to be confirmed' }}</p><a *ngIf="service.googleMapsUrl" [href]="service.googleMapsUrl" target="_blank" rel="noopener noreferrer">Open in Google Maps →</a><small *ngIf="!service.googleMapsUrl">Map link coming soon</small></article>
+      <p *ngIf="!services.length" class="loading">Loading locations…</p>
+    </section>
+
+    <section *ngIf="page === 'contact'" class="contact-layout">
+      <div><h2>Tell us what you need.</h2><p>We will listen, answer your questions, and help you choose a thoughtful next step.</p></div>
+      <div class="contact-details"><span>EMAIL</span><a href="mailto:hello@zvynwellness.com">hello@zvynwellness.com</a><span>LOCATION</span><p>Tokyo · Online worldwide</p><a class="gold-button" href="mailto:hello@zvynwellness.com?subject=ZVyn Wellness enquiry">Start a conversation →</a></div>
+    </section>
+  </main>
+</ng-template>

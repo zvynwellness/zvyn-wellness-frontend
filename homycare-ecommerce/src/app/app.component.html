@@ -1,58 +1,33 @@
-<div class="page-wrapper">
+<div class="site-shell">
+  <header class="site-header">
+    <a class="brand" routerLink="/home" aria-label="ZVyn Wellness home"><span class="brand-mark">Z</span><span><strong>ZVyn</strong><small>WELLNESS</small></span></a>
+    <nav aria-label="Main navigation"><a routerLink="/home" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Home</a><a routerLink="/purpose" routerLinkActive="active">Purpose</a><a routerLink="/services" routerLinkActive="active">Services</a><a routerLink="/locations" routerLinkActive="active">Locations</a><a routerLink="/contact" routerLinkActive="active">Contact</a><a *ngIf="auth.account?.role === 'CUSTOMER'" routerLink="/reservations" routerLinkActive="active">Reservations</a><a *ngIf="auth.account?.role === 'EMPLOYEE'" routerLink="/employee-dashboard" routerLinkActive="active">Dashboard</a><a *ngIf="auth.account?.role === 'EMPLOYEE'" routerLink="/reservations" routerLinkActive="active">Reservations</a><a *ngIf="auth.account?.role === 'ADMIN'" routerLink="/admin-dashboard" routerLinkActive="active">Dashboard</a></nav>
+    <div class="account-actions" *ngIf="!auth.account"><button (click)="openAuth('login')">Log In</button><span>/</span><button (click)="openAuth('signup')">Sign Up</button></div>
+    <div class="account-actions signed-in" *ngIf="auth.account"><span>{{ auth.account.fullName }}</span><button (click)="auth.logout()">Log out</button></div>
+  </header>
+  <main><router-outlet></router-outlet></main>
+  <footer class="site-footer" id="contact">
+    <div><a class="brand brand-light" routerLink="/home"><span class="brand-mark">Z</span><span><strong>ZVyn</strong><small>WELLNESS</small></span></a><p>Thoughtful care for a more grounded, energized you.</p></div>
+    <div><span class="footer-label">Explore</span><a routerLink="/purpose">Purpose</a><a routerLink="/services">Services</a><a routerLink="/locations">Locations</a></div>
+    <div><span class="footer-label">Connect</span><a href="mailto:hello@zvynwellness.com">hello@zvynwellness.com</a><span>Tokyo · Online worldwide</span></div>
+    <p class="copyright">© 2026 ZVyn Wellness. All rights reserved.</p>
+  </footer>
 
-  <!-- MENU SIDEBAR-->
-  <aside class="menu-sidebar d-none d-lg-block">
-    <div class="logo">
-      <a href="#">
-        <img src="assets/images/logo.png" alt="luv2shop" class="img-responsive">
-      </a>
-    </div>
-
-    <app-product-category-menu></app-product-category-menu>
-
-  </aside>
-  <!-- END MENU SIDEBAR-->
-
-  <!-- PAGE CONTAINER-->
-  <div class="page-container">
-    <!-- HEADER DESKTOP-->
-    <header class="header-desktop">
-      <div class="section-content section-content-p30">
-        <div class="container-fluid">
-          <div class="header-wrap">
-
-            <app-search></app-search>
-
-            <!-- to replace with Search query will be overwritten in search.component.html
-            <form class="form-header" onsubmit="return false;" method="GET">
-              <input class="au-input au-input-xl" type="text" name="search"
-                     placeholder="Search for data ..." />
-              <button class="au-btn-submit" type="submit">
-                Search
-              </button>
-            </form>
-            -->
-            <app-cart-status></app-cart-status>
-
-          </div>
-          <div class="account-wrap"></div>
-        </div>
-      </div>
-    </header>
-    <!-- END HEADER DESKTOP-->
-
-    <!-- MAIN CONTENT-->
-    <router-outlet></router-outlet>
-    <!--  <app-hmyservice-list> </app-hmyservice-list> -->
+  <div class="modal-backdrop" *ngIf="authMode" (click)="closeAuth()">
+    <section class="auth-modal" role="dialog" aria-modal="true" aria-labelledby="auth-title" (click)="$event.stopPropagation()">
+      <button class="modal-close" type="button" aria-label="Close" (click)="closeAuth()">×</button>
+      <p class="modal-kicker">ZVYN WELLNESS ACCESS</p>
+      <h2 id="auth-title">{{ authMode === 'login' ? 'Welcome back.' : 'Begin your journey.' }}</h2>
+      <p>{{ authMode === 'login' ? 'Log in to your private ZVyn Wellness account.' : 'Create a customer account for a more personal experience.' }}</p>
+      <form (ngSubmit)="submitAuth()">
+        <label *ngIf="authMode === 'signup'">Full name<input name="fullName" [(ngModel)]="fullName" required maxlength="120" autocomplete="name"></label>
+        <label>Email address<input name="email" [(ngModel)]="email" required type="email" autocomplete="email"></label>
+        <label>Password<input name="password" [(ngModel)]="password" required minlength="10" type="password" [autocomplete]="authMode === 'login' ? 'current-password' : 'new-password'"></label>
+        <p class="form-message success" *ngIf="authMessage">{{ authMessage }}</p>
+        <p class="form-message error" *ngIf="authError">{{ authError }}</p>
+        <button class="auth-submit" type="submit" [disabled]="submitting">{{ submitting ? 'Please wait…' : (authMode === 'login' ? 'Log In' : 'Create Account') }}</button>
+      </form>
+      <button class="mode-switch" type="button" (click)="openAuth(authMode === 'login' ? 'signup' : 'login')">{{ authMode === 'login' ? 'New to ZVyn? Sign up' : 'Already have an account? Log in' }}</button>
+    </section>
   </div>
 </div>
-
-<!-- END PAGE CONTAINER-->
-
-<footer>
-  <ul>
-    <li><a href="#">About Us</a></li>
-    <li><a href="#">Contact Us</a></li>
-    <li><a href="#">Help</a></li>
-  </ul>
-</footer>

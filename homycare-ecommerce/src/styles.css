@@ -22,6 +22,12 @@ body{
     -moz-osx-font-smoothing:grayscale
 }
 
+html{scroll-behavior:smooth}
+body{background:#f7f2e8;color:#29251f}
+a{text-decoration:none}
+.reservation-list article button{margin-top:10px;color:#9b3f34;font-size:9px;letter-spacing:.1em;text-transform:uppercase;border-bottom:1px solid #c99b91}.reservation-list article small{display:block;margin-top:8px;color:#9b3f34;font-size:10px}
+.home-links{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#d8c7a8;border-top:1px solid #d8c7a8}.home-links a{background:#fffaf0;padding:45px 6vw;color:#29251f;min-height:230px}.home-links span{font:30px Georgia,serif}.home-links p{margin:18px 0 30px;color:#71675a;line-height:1.7}.home-links b{font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:#a7782e}@media(max-width:750px){.home-links{grid-template-columns:1fr}.home-links a{min-height:auto;padding:38px 24px}}
+
 ul{
     margin:0
 }

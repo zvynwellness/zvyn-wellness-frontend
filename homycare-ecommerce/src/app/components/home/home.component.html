@@ -1,0 +1,68 @@
+<section class="hero" id="home">
+  <div class="hero-copy">
+    <p class="eyebrow">WELLNESS RHYTHM · INTENTIONAL LIVING</p>
+    <h1>A quieter way<br>to feel <em>whole.</em></h1>
+    <p class="intro">Live intentionally and create lasting impact.</p>
+    <div class="hero-actions"><a class="button button-gold" routerLink="/purpose">Discover ZVyn <span>→</span></a><a class="text-link" routerLink="/services">Discover the services</a></div>
+    <div class="hero-notes"><span>Personalized sessions</span><span>Thoughtful guidance</span><span>Lasting change</span></div>
+  </div>
+  <div class="hero-art" aria-hidden="true"><div class="halo halo-one"></div><div class="halo halo-two"></div><div class="gold-disc"></div><div class="hero-monogram">Z</div><div class="hero-card"><span>ZVYN WELLNESS</span><strong>Understanding your rhythm.</strong><p>Movement · Restoration · Mindfulness</p></div></div>
+</section>
+<section class="purpose" id="purpose">
+  <div class="purpose-grid">
+    <h2>{{ purpose.brandPhilosophy }}</h2>
+    <div class="purpose-copy"><p>{{ purpose.personalApproach }}</p><div class="values"><p>{{ purpose.coreValues }}</p></div></div>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="section-heading"><h2>Care, made personal.</h2><p>Every session is personalized, unhurried, and responsive to what you need that day.</p></div>
+  <div class="service-grid">
+    <article *ngFor="let service of monthlyServices; let i = index">
+      <div class="service-top"><span>{{ serviceNumber(i) }}</span><span>{{ service.durationMinutes }} MIN</span></div>
+      <div class="service-symbol" [class.symbol-two]="i === 1" [class.symbol-three]="i === 2"><i></i></div>
+      <h3>{{ service.serviceName }}</h3><p>{{ service.description }}</p>
+      <p>{{ service.scheduledDateTime | date:'medium' }}<span *ngIf="service.instructorName"> · {{ service.instructorName }}</span><br><a *ngIf="service.googleMapsUrl" [href]="service.googleMapsUrl" target="_blank" rel="noopener noreferrer">{{ service.location }} ↗</a><span *ngIf="!service.googleMapsUrl">{{ service.location }}</span> · {{ service.priceAmount == null ? 'Price on request' : (service.currency + ' ' + service.priceAmount) }}</p>
+      <a routerLink="/services">Discover this service <span>↗</span></a>
+    </article>
+    <p class="empty-services" *ngIf="!monthlyServices.length">The Admin has not selected this month’s featured services yet.</p>
+  </div>
+</section>
+
+<section class="pricing" id="pricing">
+  <div class="pricing-intro">
+    <h2>Simple choices.<br><em>No hidden details.</em></h2>
+    <p>Wellness is not one-size-fits-all. Your lifestyle, goals, challenges, and definition of feeling well are uniquely yours.</p>
+  </div>
+  <div class="pricing-list">
+    <article *ngFor="let plan of pricing; let i = index" [class.featured]="i === 1">
+      <div><span class="plan-number">0{{ i + 1 }}</span><h3>{{ plan.name }}</h3><p>{{ plan.description }}</p></div>
+      <div class="price"><button class="price-contact" *ngIf="plan.displayPrice.toLowerCase() === 'contact us'" type="button" (click)="openContact(plan.name)">Contact us</button><strong *ngIf="plan.displayPrice.toLowerCase() !== 'contact us'">{{ plan.displayPrice }}</strong><span *ngIf="plan.priceAmount">{{ plan.currency }}</span></div>
+    </article>
+    <div class="payment-note"><span>◇</span><p><strong>Offline payment</strong> Payment is arranged directly after your reservation is personally confirmed. No payment is collected on this website.</p></div>
+  </div>
+</section>
+
+<div class="contact-overlay" *ngIf="contactOpen" (click)="closeContact()">
+  <section class="contact-modal" role="dialog" aria-modal="true" aria-labelledby="contact-title" (click)="$event.stopPropagation()">
+    <button class="contact-close" type="button" aria-label="Close contact form" (click)="closeContact()">×</button>
+    <p class="eyebrow">CONTACT ZVYN</p><h2 id="contact-title">Begin a conversation.</h2>
+    <p>Tell us what you are looking for. Your enquiry will be sent securely to meerashvin@gmail.com.</p>
+    <form (ngSubmit)="submitContact()">
+      <label>Name *<input name="contactName" [(ngModel)]="contact.name" required></label>
+      <label>Telephone *<input name="contactTelephone" [(ngModel)]="contact.telephone" type="tel" required></label>
+      <label>Email address *<input name="contactEmail" [(ngModel)]="contact.email" type="email" required></label>
+      <label>Preferred contact method *<select name="contactPreference" [(ngModel)]="contact.preference"><option>Email</option><option>Telephone</option></select></label>
+      <label class="contact-details">Consultation details *<textarea name="contactDetails" [(ngModel)]="contact.details" rows="5" required></textarea></label>
+      <p class="contact-error" *ngIf="contactError">{{ contactError }}</p>
+      <p class="contact-success" *ngIf="contactMessage">{{ contactMessage }}</p>
+      <button class="button button-gold" type="submit" [disabled]="contactSubmitting">{{ contactSubmitting ? 'Sending…' : 'Send enquiry' }} <span>→</span></button>
+    </form>
+  </section>
+</div>
+
+<section class="reserve" id="reserve">
+  <p class="eyebrow">A PERSONAL BEGINNING</p><h2>Make space for <em>yourself.</em></h2>
+  <p>Tell us what you are looking for. We will help you select the right session and arrange a time that feels comfortable.</p>
+  <a class="button button-ivory" routerLink="/services">Reserve a session <span>→</span></a>
+</section>

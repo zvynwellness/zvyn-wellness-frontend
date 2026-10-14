@@ -1,16 +1,22 @@
-<div class="main-content">
+<section class="services-hero">
+  <p class="services-eyebrow">ZVYN WELLNESS SERVICES</p>
+  <h1>Care designed around <em>you.</em></h1>
+  <p>Explore personalized ways to restore your energy, rebalance your rhythm, and move forward feeling supported.</p>
+</section>
+<div class="services-toolbar"><app-product-category-menu></app-product-category-menu><app-search></app-search></div>
+<div class="main-content services-content">
   <div class="section-content section-content-p30">
     <div class="container-fluid">
       <div class="row">
 
         <!-- loop over the collection of products -->
-        <div *ngFor="let tempProduct of products" class="col-md-3">
+        <div *ngFor="let tempProduct of products" class="col-md-4">
 
           <div class="product-box">
 
             <!-- adding link to product name and image -->
             <a routerLink="/products/{{ tempProduct.id }}">
-              <img src="{{ tempProduct.imageUrl }}" class="img-responsive">
+              <img src="{{ tempProduct.imageUrl }}" class="img-responsive" alt="{{ tempProduct.name }}">
             </a>
 
             <a routerLink="/products/{{ tempProduct.id }}">
@@ -20,13 +26,13 @@
             <div>{{ tempProduct.description}}</div>
 
             <!--<div class="price">{{ tempProduct.unitPrice | currency:'USD' }}</div>-->
-            <button (click)="addToCart(tempProduct)" class="btn btn-primary btn-sm">Add to cart</button>
+            <a routerLink="/products/{{ tempProduct.id }}" class="service-link">Explore service <span>→</span></a>
           </div>
         </div>
 
         <!-- if products empty then display a message -->
         <div *ngIf="products?.length == 0" class="alert alert-warning col-md-12" role="alert">
-          No product found
+          No wellness services matched your search.
         </div>
 
       </div>
@@ -50,7 +56,7 @@
               </div>
 
               <div class="col-md-3 mt-2" style="text-align: right;">
-                <span class="mr-2">Page Size</span>
+                <span class="mr-2">Services per page</span>
 
                 <select #myPageSelect (change)="updatePageSize(myPageSelect.value)">
                   <option>1</option>

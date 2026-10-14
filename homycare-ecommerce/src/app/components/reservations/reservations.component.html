@@ -1,0 +1,19 @@
+<header class="reservation-hero"><p>PRIVATE CUSTOMER ACCESS</p><h1>Your <em>reservations.</em></h1><span>Request a new session or review your existing appointments.</span></header>
+<main class="reservation-layout">
+  <section class="reservation-form">
+    <p class="kicker">RESERVE A SESSION</p><h2>Choose your next step.</h2>
+    <form (ngSubmit)="reserve()">
+      <label>Wellness service<select name="serviceId" [(ngModel)]="serviceId" required><option [ngValue]="undefined" disabled>Select a service</option><option *ngFor="let service of services" [ngValue]="service.id">{{ service.name }} · {{ service.durationMinutes }} min</option></select></label>
+      <label>Preferred date and time<input name="preferredDateTime" [(ngModel)]="preferredDateTime" required type="datetime-local"></label>
+      <label>Anything you would like us to know<textarea name="notes" [(ngModel)]="notes" maxlength="1000" rows="4"></textarea></label>
+      <p class="success" *ngIf="message">{{ message }}</p><p class="error" *ngIf="error">{{ error }}</p>
+      <button type="submit">Request reservation →</button>
+    </form>
+  </section>
+  <section class="reservation-list">
+    <p class="kicker">YOUR REQUESTS</p>
+    <article *ngFor="let reservation of reservations"><div><span>{{ reservation.status }}</span><h3>{{ reservation.serviceName }}</h3><p>{{ reservation.preferredDateTime | date:'medium' }}</p><p>Instructor: {{ reservation.instructorName || 'To be assigned' }}</p><button *ngIf="canCancel(reservation)" type="button" (click)="cancel(reservation)">Cancel appointment</button><small *ngIf="reservation.status !== 'CANCELLED' && !canCancel(reservation)">Within 24 hours, contact customer service to cancel.</small></div><b>◇</b></article>
+    <p class="empty" *ngIf="!reservations.length">You do not have any reservation requests yet.</p>
+    <aside><strong>Offline payment</strong><p>Payment details are shared after your reservation is personally confirmed.</p></aside>
+  </section>
+</main>

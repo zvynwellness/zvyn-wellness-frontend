@@ -20,6 +20,7 @@
             "tsConfig": "tsconfig.app.json",
             "assets": [
               "src/favicon.ico",
+              "src/_redirects",
               "src/assets"
             ],
             "styles": [
@@ -39,8 +40,8 @@
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "2kb",
-                  "maximumError": "4kb"
+                  "maximumWarning": "7kb",
+                  "maximumError": "10kb"
                 }
               ],
               "fileReplacements": [
