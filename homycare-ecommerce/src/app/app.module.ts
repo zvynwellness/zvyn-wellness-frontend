@@ -43,8 +43,10 @@ const routes: Routes = [
   {path: 'category/:id', component : ProductListComponent},
   {path: 'category', component : ProductListComponent},
   {path: 'products', component : ProductListComponent},
-  {path: '', redirectTo : '/home', pathMatch: 'full'},
-  {path: '**', redirectTo : '/home', pathMatch: 'full'}];
+  // Render the homepage at the bare domain so visitors can use
+  // https://zvyn-wellness.com/ without an extra `/home` path.
+  {path: '', component: HomeComponent, pathMatch: 'full'},
+  {path: '**', redirectTo : '/', pathMatch: 'full'}];
 
 
 @NgModule({
