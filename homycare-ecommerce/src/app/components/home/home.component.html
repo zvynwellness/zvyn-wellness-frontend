@@ -8,13 +8,6 @@
   </div>
   <div class="hero-art" aria-hidden="true"><div class="halo halo-one"></div><div class="halo halo-two"></div><div class="gold-disc"></div><div class="hero-monogram">Z</div><div class="hero-card"><span>ZVYN WELLNESS</span><strong>Understanding your rhythm.</strong><p>Movement · Restoration · Mindfulness</p></div></div>
 </section>
-<section class="purpose" id="purpose">
-  <div class="purpose-grid">
-    <h2>{{ purpose.brandPhilosophy }}</h2>
-    <div class="purpose-copy"><p>{{ purpose.personalApproach }}</p><div class="values"><p>{{ purpose.coreValues }}</p></div></div>
-  </div>
-</section>
-
 <section class="services" id="services">
   <div class="section-heading"><h2>Care, made personal.</h2><p>Every session is personalized, unhurried, and responsive to what you need that day.</p></div>
   <div class="service-grid">
@@ -31,13 +24,14 @@
 
 <section class="pricing" id="pricing">
   <div class="pricing-intro">
-    <h2>Simple choices.<br><em>No hidden details.</em></h2>
-    <p>Wellness is not one-size-fits-all. Your lifestyle, goals, challenges, and definition of feeling well are uniquely yours.</p>
+    <p class="eyebrow">A considered beginning</p>
+    <h2>Care, shaped<br><em>around you.</em></h2>
+    <p>Every session begins with a conversation. Together, we choose the pace, setting, and support that feel right for your life.</p>
   </div>
   <div class="pricing-list">
-    <article *ngFor="let plan of pricing; let i = index" [class.featured]="i === 1">
-      <div><span class="plan-number">0{{ i + 1 }}</span><h3>{{ plan.name }}</h3><p>{{ plan.description }}</p></div>
-      <div class="price"><button class="price-contact" *ngIf="plan.displayPrice.toLowerCase() === 'contact us'" type="button" (click)="openContact(plan.name)">Contact us</button><strong *ngIf="plan.displayPrice.toLowerCase() !== 'contact us'">{{ plan.displayPrice }}</strong><span *ngIf="plan.priceAmount">{{ plan.currency }}</span></div>
+    <article class="featured single-offering">
+      <div><span class="plan-number">01</span><h3>Personalized wellness sessions</h3><p>Private movement, restorative care, and guided mindfulness—held with thoughtful attention and adapted to your rhythm.</p></div>
+      <div class="price"><button class="price-contact" type="button" (click)="openContact('Personalized wellness sessions')">Begin a conversation <span>→</span></button></div>
     </article>
     <div class="payment-note"><span>◇</span><p><strong>Offline payment</strong> Payment is arranged directly after your reservation is personally confirmed. No payment is collected on this website.</p></div>
   </div>
