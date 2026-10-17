@@ -28,8 +28,8 @@ import { AdminDashboardService } from './services/admin-dashboard.service';
 
 const routes: Routes = [
   {path: 'home', component : HomeComponent},
-  {path: 'purpose', component: SitePageComponent, data: { page: 'purpose' }},
-  {path: 'about', redirectTo: '/purpose', pathMatch: 'full'},
+  {path: 'purpose', redirectTo: '/about', pathMatch: 'full'},
+  {path: 'about', component: SitePageComponent, data: { page: 'about' }},
   {path: 'services', component: SitePageComponent, data: { page: 'services' }},
   {path: 'pricing', redirectTo: '/services', pathMatch: 'full'},
   {path: 'locations', component: SitePageComponent, data: { page: 'locations' }},

@@ -49,12 +49,21 @@
   <header class="page-hero">
     <p>ZVYN WELLNESS</p>
     <h1 *ngIf="page === 'services'">Care, made <em>personal.</em></h1>
+    <h1 *ngIf="page === 'about'">Wellness beyond <em>boundaries.</em></h1>
     <h1 *ngIf="page === 'locations'">Find your <em>place.</em></h1>
     <h1 *ngIf="page === 'reflections'">A space to <em>reflect.</em></h1>
     <h1 *ngIf="page === 'contact'">Begin with a <em>conversation.</em></h1>
   </header>
 
   <main class="page-body">
+    <section *ngIf="page === 'about'" class="about-layout">
+      <div class="about-intro"><span class="kicker">ABOUT ZVYN</span><img class="about-image" src="assets/images/wellness/purpose-journal.jpg" alt="Journal, tea, and natural textures representing cultural wellness practice"><h2>Exploring the world through the lens of <em>wellness.</em></h2><p>Wellness begins by listening—to the mind, body, energy, and everyday life.</p><p>From ancient healing traditions to modern approaches, we discover how different cultures nurture well-being and share those practices in ways that feel accessible, inclusive, and meaningful.</p></div>
+      <div class="about-pillars">
+        <article><span>VISION</span><h3>A world where wellness transcends geographical, cultural, and financial boundaries.</h3></article>
+        <article><span>MISSION</span><h3>Discover, research, experience, and share wellness practices from different countries, connecting cultural wisdom with modern lifestyles.</h3></article>
+        <article><span>BRAND PHILOSOPHY</span><h3>Wellness is a way of living to experience it.</h3></article>
+      </div>
+    </section>
     <section *ngIf="page === 'services' && !selectedCategory" class="experience-category-grid">
       <article class="experience-category category-move"><img src="assets/images/wellness/purpose-care.jpg" alt="Movement practice in warm natural light"><div><span>01 · MOVEMENT</span><h2>Move</h2><p>Build strength, mobility, and confidence through private movement guidance and classic yoga.</p><a routerLink="/services" [queryParams]="{category:'MOVE'}">Explore movement →</a></div></article>
       <article class="experience-category category-reflect"><img src="assets/images/wellness/purpose-journal.jpg" alt="Journal and tea in warm natural light"><div><span>02 · MINDFULNESS</span><h2>Reflect</h2><p>Make room for stillness through guided mindfulness, journaling, and thoughtful self-inquiry.</p><a routerLink="/services" [queryParams]="{category:'REFLECT'}">Explore reflection →</a></div></article>
@@ -78,7 +87,7 @@
 
     <section *ngIf="page === 'contact'" class="contact-layout">
       <div><h2>Tell us what you need.</h2><p>We will listen, answer your questions, and help you choose a thoughtful next step.</p></div>
-      <div class="contact-details"><span>EMAIL</span><a href="mailto:hello@zvynwellness.com">hello@zvynwellness.com</a><span>LOCATION</span><p>Tokyo · Online worldwide</p><a class="gold-button" href="mailto:hello@zvynwellness.com?subject=ZVyn Wellness enquiry">Start a conversation →</a></div>
+      <div class="contact-details"><span>EMAIL</span><a href="mailto:zvyn-wellness@gmail.com">zvyn-wellness@gmail.com</a><span>LOCATION</span><p>Tokyo · Online worldwide</p><a class="gold-button" href="mailto:zvyn-wellness@gmail.com?subject=ZVyn Wellness enquiry">Start a conversation →</a></div>
     </section>
   </main>
 </ng-template>

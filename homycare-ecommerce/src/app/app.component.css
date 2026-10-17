@@ -3,3 +3,26 @@
 .site-footer{grid-template-columns:1.4fr 1fr;gap:34px;padding:38px 6vw 58px}.site-footer>div{gap:7px}.site-footer .brand{margin-bottom:8px}.site-footer p{margin:0}.copyright{bottom:18px}
 .site-footer a,.site-footer a:hover,.site-footer a:focus{text-decoration:none!important;border-bottom:0!important}
 @media(max-width:850px){.site-footer{grid-template-columns:1fr;padding:34px 24px 58px}}
+
+/* Larger, quietly luxurious navigation typography. */
+.site-header{font-family:Baskerville,"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif}
+.brand{gap:12px}
+.brand-mark{width:43px;height:43px;font-size:27px}
+.brand strong{font-size:29px;letter-spacing:-.03em}
+.brand small{font-size:8px;letter-spacing:.32em}
+.site-header nav{gap:28px}
+.site-header nav a{font-size:14px;letter-spacing:.035em;padding:31px 0 25px}
+.account-actions{gap:12px}
+.account-actions button{font-size:12px;letter-spacing:.1em}
+@media(max-width:1050px){.site-header nav{gap:18px}.site-header nav a{font-size:12px}}
+
+/* More prominent homepage masthead type. */
+.site-header{height:94px}
+.brand-mark{width:48px;height:48px;font-size:30px}
+.brand strong{font-size:34px;line-height:.82}
+.brand small{font-size:9px;letter-spacing:.34em}
+.site-header nav{gap:30px}
+.site-header nav a{font-size:16px;padding:35px 0 29px;letter-spacing:.045em}
+.account-actions button{font-size:14px;letter-spacing:.11em}
+@media(max-width:1050px){.site-header nav{gap:20px}.site-header nav a{font-size:14px}}
+@media(max-width:850px){.site-header{height:78px}.brand-mark{width:42px;height:42px;font-size:27px}.brand strong{font-size:29px}.brand small{font-size:8px}.account-actions button{font-size:12px}}

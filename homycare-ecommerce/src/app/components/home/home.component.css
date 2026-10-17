@@ -66,3 +66,34 @@
 .tile-content a:hover,.tile-content a:focus-visible{transform:translateY(-2px);box-shadow:0 0 0 4px rgba(216,189,130,.3),0 8px 20px rgba(0,0,0,.2)}
 @media(max-width:850px){.hero,.hero-copy{min-height:520px}.hero-copy-inner{padding:64px 28px}.experience-tiles{grid-template-columns:1fr;padding:12px 20px 28px}.experience-tile{min-height:260px}.tile-content h2{font-size:36px}}
 @media(max-width:600px){.hero{background-position:64% center}.hero h1{font-size:54px}.hero .intro{font-size:16px;letter-spacing:.08em}.hero-actions{align-items:stretch;flex-direction:column;width:max-content}.hero .button{width:260px}.experience-tile{min-height:230px}.tile-content p{font-size:11px;white-space:normal;padding-right:58px}}
+
+/* Compact the homepage without losing its spacious editorial rhythm. */
+.hero-copy-inner{padding:56px 4vw 48px}
+.purpose,.services,.pricing{padding-top:78px;padding-bottom:78px}
+.purpose-grid{gap:7vw;margin-top:34px}
+.section-heading{margin-bottom:34px}
+.service-grid{gap:14px}
+.service-grid article{padding:22px 24px 26px;min-height:360px}
+.service-symbol{height:92px;margin:24px 0 18px}
+.pricing-intro h2{margin:18px 0}
+.pricing-list article{padding:22px 18px}
+.experience-tiles{gap:14px;padding:10px 24px 24px}
+.experience-tile{min-height:260px}
+.tile-content{inset:auto 22px 16px}
+@media(max-width:850px){.hero-copy-inner{padding:48px 28px 38px}.purpose,.services,.pricing{padding-top:60px;padding-bottom:60px}.experience-tiles{padding:10px 20px 22px}.experience-tile{min-height:235px}}
+@media(max-width:600px){.hero-copy-inner{padding:42px 24px 32px}.purpose,.services,.pricing{padding-top:52px;padding-bottom:52px}}
+
+.hero .button-outline{border:1px solid var(--gold)!important;box-shadow:inset 0 0 0 1px rgba(255,255,255,.28);}
+.hero .button-outline:hover,.hero .button-outline:focus-visible{border-color:#9c6c24!important;box-shadow:inset 0 0 0 1px rgba(184,138,59,.18),0 0 0 5px rgba(216,189,130,.28),0 0 24px rgba(184,138,59,.48)}
+
+.hero h1{font-size:clamp(50px,5.4vw,84px);line-height:.94;margin:22px 0 18px}
+.hero .intro{font-size:17px;line-height:1.55;margin-bottom:24px}
+.hero .button{font-size:11px;padding:15px 24px}
+.tile-content h2{font-size:34px}
+.purpose h2,.section-heading h2,.pricing h2{font-size:clamp(34px,3.8vw,54px)}
+.purpose-copy>p{font-size:17px;line-height:1.6}
+.pricing-list h3{font-size:26px}
+.services{padding-top:55px;padding-bottom:55px}
+.services .section-heading>p{white-space:nowrap}
+@media(max-width:850px){.services .section-heading>p{white-space:normal}}
+@media(max-width:600px){.hero h1{font-size:48px}.hero .intro{font-size:15px}.tile-content h2{font-size:30px}.purpose h2,.section-heading h2,.pricing h2{font-size:38px}}
