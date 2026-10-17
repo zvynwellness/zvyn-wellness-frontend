@@ -1,15 +1,14 @@
 <div class="site-shell">
   <header class="site-header">
     <a class="brand" routerLink="/home" aria-label="ZVyn Wellness home"><span class="brand-mark">Z</span><span><strong>ZVyn</strong><small>WELLNESS</small></span></a>
-    <nav aria-label="Main navigation"><a routerLink="/home" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Home</a><a routerLink="/purpose" routerLinkActive="active">Purpose</a><a routerLink="/services" routerLinkActive="active">Services</a><a routerLink="/locations" routerLinkActive="active">Locations</a><a routerLink="/contact" routerLinkActive="active">Contact</a><a *ngIf="auth.account?.role === 'CUSTOMER'" routerLink="/reservations" routerLinkActive="active">Reservations</a><a *ngIf="auth.account?.role === 'EMPLOYEE'" routerLink="/employee-dashboard" routerLinkActive="active">Dashboard</a><a *ngIf="auth.account?.role === 'EMPLOYEE'" routerLink="/reservations" routerLinkActive="active">Reservations</a><a *ngIf="auth.account?.role === 'ADMIN'" routerLink="/admin-dashboard" routerLinkActive="active">Dashboard</a></nav>
+    <nav aria-label="Main navigation"><a routerLink="/home" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Home</a><a routerLink="/purpose" routerLinkActive="active">Purpose</a><a routerLink="/services" routerLinkActive="active">Services</a><a routerLink="/reflections" routerLinkActive="active">Reflections</a><a routerLink="/contact" routerLinkActive="active">Contact</a><a *ngIf="auth.account?.role === 'CUSTOMER'" routerLink="/reservations" routerLinkActive="active">Reservations</a><a *ngIf="auth.account?.role === 'EMPLOYEE'" routerLink="/employee-dashboard" routerLinkActive="active">Dashboard</a><a *ngIf="auth.account?.role === 'EMPLOYEE'" routerLink="/reservations" routerLinkActive="active">Reservations</a><a *ngIf="auth.account?.role === 'ADMIN'" routerLink="/admin-dashboard" routerLinkActive="active">Dashboard</a></nav>
     <div class="account-actions" *ngIf="!auth.account"><button (click)="openAuth('login')">Log In</button></div>
     <div class="account-actions signed-in" *ngIf="auth.account"><span>{{ auth.account.fullName }}</span><button (click)="auth.logout()">Log out</button></div>
   </header>
   <main><router-outlet></router-outlet></main>
   <footer class="site-footer" id="contact">
     <div><a class="brand brand-light" routerLink="/home"><span class="brand-mark">Z</span><span><strong>ZVyn</strong><small>WELLNESS</small></span></a><p>Thoughtful care for a more grounded, energized you.</p></div>
-    <div><span class="footer-label">Explore</span><a routerLink="/purpose">Purpose</a><a routerLink="/services">Services</a><a routerLink="/locations">Locations</a></div>
-    <div><span class="footer-label">Connect</span><a href="mailto:hello@zvynwellness.com">hello@zvynwellness.com</a><span>Tokyo · Online worldwide</span></div>
+    <div><span class="footer-label">Connect</span><a href="mailto:zvyn-wellness@gmail.com">zvyn-wellness@gmail.com</a><span>Tokyo · Online worldwide</span></div>
     <p class="copyright">© 2026 ZVyn Wellness. All rights reserved.</p>
   </footer>
 

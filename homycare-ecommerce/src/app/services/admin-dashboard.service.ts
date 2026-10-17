@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { AuthService } from './auth.service';
 
-export interface AdminService { id:number; name:string; slug:string; description:string; durationMinutes:number; imageUrl?:string; displayOrder:number; active:boolean; customerCapacity:number; employeeCapacity:number; location:string; googleMapsUrl?:string; priceAmount?:number; currency:string; scheduledDateTime:string; instructorEmployeeId?:number; instructorName?:string; }
+export interface AdminService { id:number; name:string; slug:string; description:string; category:'MOVE'|'REFLECT'|'RESTORE_EXPLORE'; durationMinutes:number; imageUrl?:string; displayOrder:number; active:boolean; customerCapacity:number; employeeCapacity:number; location:string; googleMapsUrl?:string; priceAmount?:number; currency:string; scheduledDateTime:string; instructorEmployeeId?:number; instructorName?:string; }
 export interface AdminEmployee { id:number; name:string; jobTitle:string; specialty:string; }
 export interface AdminReservation { id:number; customerName:string; serviceName:string; preferredDateTime:string; status:string; instructorName?:string; }
 export interface MonthlyService { id:number; serviceId:number; serviceName:string; employeeId?:number; instructorName?:string; serviceMonth:string; }

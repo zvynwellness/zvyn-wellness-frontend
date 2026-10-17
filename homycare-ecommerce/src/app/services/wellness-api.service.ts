@@ -9,6 +9,7 @@ export interface WellnessService {
   name: string;
   slug: string;
   description: string;
+  category?: 'MOVE' | 'REFLECT' | 'RESTORE_EXPLORE';
   durationMinutes: number;
   imageUrl?: string;
   location?: string;

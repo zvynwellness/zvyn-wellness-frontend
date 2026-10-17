@@ -10,6 +10,7 @@ import { PricingPlan, PurposeContent, WellnessApiService, WellnessService } from
 export class SitePageComponent implements OnInit {
   page = 'about';
   services: WellnessService[] = [];
+  selectedCategory: 'MOVE' | 'REFLECT' | 'RESTORE_EXPLORE' | null = null;
   pricing: PricingPlan[] = [];
   purpose: PurposeContent = {
     brandPhilosophy: 'Wellness is not a destination. It is your rhythm—personal, evolving, and uniquely yours.',
@@ -20,11 +21,23 @@ export class SitePageComponent implements OnInit {
   constructor(private route: ActivatedRoute, private api: WellnessApiService) { }
 
   ngOnInit(): void {
+    this.route.queryParams.subscribe(params => {
+      const category = params['category'];
+      this.selectedCategory = ['MOVE', 'REFLECT', 'RESTORE_EXPLORE'].includes(category) ? category : null;
+    });
     this.route.data.subscribe(data => {
       this.page = data['page'];
       if (this.page === 'purpose') { this.api.getPurpose().subscribe({ next: value => { if (value) { this.purpose = value; } } }); }
       if (this.page === 'services' || this.page === 'locations') { this.api.getServices().subscribe({ next: value => this.services = value }); }
       if (this.page === 'pricing') { this.api.getPricing().subscribe({ next: value => this.pricing = value }); }
     });
+  }
+
+  get visibleServices(): WellnessService[] {
+    return this.selectedCategory ? this.services.filter(service => service.category?.toUpperCase() === this.selectedCategory || (!service.category && this.selectedCategory === 'MOVE')) : this.services;
+  }
+
+  categoryTitle(): string {
+    return this.selectedCategory === 'MOVE' ? 'Move' : this.selectedCategory === 'REFLECT' ? 'Reflect' : 'Restore & Explore';
   }
 }

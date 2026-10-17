@@ -4,14 +4,14 @@ import { AdminDashboard, AdminDashboardService, AdminService } from '../../servi
 @Component({selector:'app-admin-dashboard',templateUrl:'./admin-dashboard.component.html',styleUrls:['./admin-dashboard.component.css']})
 export class AdminDashboardComponent implements OnInit {
   dashboard?:AdminDashboard; error=''; message=''; assignments:Record<number,number>={};
-  service:Partial<AdminService>={name:'',slug:'',description:'',durationMinutes:60,displayOrder:0,active:true,customerCapacity:10,employeeCapacity:5,location:'To be confirmed',currency:'JPY'};
+  service:Partial<AdminService>={name:'',slug:'',description:'',category:'MOVE',durationMinutes:60,displayOrder:0,active:true,customerCapacity:10,employeeCapacity:5,location:'To be confirmed',currency:'JPY'};
   monthServiceId?:number;
   constructor(private api:AdminDashboardService){}
   ngOnInit(){this.load();}
   load(){this.api.dashboard().subscribe({next:value=>this.dashboard=value,error:()=>this.error='Admin dashboard could not be loaded.'});}
   confirm(id:number){const employeeId=this.assignments[id];if(!employeeId)return;this.api.confirm(id,employeeId).subscribe({next:()=>{this.message='Reservation confirmed and instructor assigned.';this.load();},error:()=>this.error='Unable to confirm the reservation.'});}
-  edit(value:AdminService){this.service={...value};}
-  reset(){this.service={name:'',slug:'',description:'',durationMinutes:60,displayOrder:0,active:true,customerCapacity:10,employeeCapacity:5,location:'To be confirmed',currency:'JPY'};}
+  edit(value:AdminService){this.service={...value,category:value.category||'MOVE'};}
+  reset(){this.service={name:'',slug:'',description:'',category:'MOVE',durationMinutes:60,displayOrder:0,active:true,customerCapacity:10,employeeCapacity:5,location:'To be confirmed',currency:'JPY'};}
   save(){
     this.error=''; this.message='';
     const name=this.service.name?.trim()||'';

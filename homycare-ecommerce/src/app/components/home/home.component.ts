@@ -14,6 +14,12 @@ export class HomeComponent implements OnInit {
   contactPlan = '';
   contact = { name: '', telephone: '', details: '', email: '', preference: 'Email' };
   monthlyServices: MonthlyWellnessService[] = [];
+  experienceCards = [
+    { name: 'Onsen Retreat', image: 'assets/images/wellness/purpose-care.jpg' },
+    { name: 'Forest Bathing', image: 'assets/images/wellness/purpose-journal.jpg' },
+    { name: 'SUP Yoga', image: 'assets/images/wellness/purpose-hero.jpg' },
+    { name: 'Cycling Day', image: 'assets/images/wellness/purpose-care.jpg' }
+  ];
   services: WellnessService[] = [
     { name: 'Private Movement', slug: 'private-movement', description: 'One-to-one movement guidance adapted to your body, ability, goals, and pace.', durationMinutes: 60, displayOrder: 1, active: true },
     { name: 'Restorative Wellness', slug: 'restorative-wellness', description: 'A gentle restorative session centered on rest, recovery, nourishment, and sustainable daily rhythms.', durationMinutes: 60, displayOrder: 2, active: true },

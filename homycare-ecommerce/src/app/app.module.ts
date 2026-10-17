@@ -33,6 +33,7 @@ const routes: Routes = [
   {path: 'services', component: SitePageComponent, data: { page: 'services' }},
   {path: 'pricing', redirectTo: '/services', pathMatch: 'full'},
   {path: 'locations', component: SitePageComponent, data: { page: 'locations' }},
+  {path: 'reflections', component: SitePageComponent, data: { page: 'reflections' }},
   {path: 'access', redirectTo: '/locations', pathMatch: 'full'},
   {path: 'contact', component: SitePageComponent, data: { page: 'contact' }},
   {path: 'reservations', component: ReservationsComponent, canActivate: [AuthGuard]},

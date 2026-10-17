@@ -50,18 +50,30 @@
     <p>ZVYN WELLNESS</p>
     <h1 *ngIf="page === 'services'">Care, made <em>personal.</em></h1>
     <h1 *ngIf="page === 'locations'">Find your <em>place.</em></h1>
+    <h1 *ngIf="page === 'reflections'">A space to <em>reflect.</em></h1>
     <h1 *ngIf="page === 'contact'">Begin with a <em>conversation.</em></h1>
   </header>
 
   <main class="page-body">
-    <section *ngIf="page === 'services'" class="card-grid">
-      <article *ngFor="let service of services"><span>{{ service.durationMinutes }} MINUTES</span><h2>{{ service.name }}</h2><p>{{ service.description }}</p><p class="service-location">{{ service.location || 'Location to be confirmed' }}</p><a *ngIf="service.googleMapsUrl" [href]="service.googleMapsUrl" target="_blank" rel="noopener noreferrer">Open location in Google Maps →</a><a [href]="'mailto:hello@zvynwellness.com?subject=Reserve ' + service.name">Reserve a session →</a></article>
-      <p *ngIf="!services.length" class="loading">Loading services…</p>
+    <section *ngIf="page === 'services' && !selectedCategory" class="experience-category-grid">
+      <article class="experience-category category-move"><img src="assets/images/wellness/purpose-care.jpg" alt="Movement practice in warm natural light"><div><span>01 · MOVEMENT</span><h2>Move</h2><p>Build strength, mobility, and confidence through private movement guidance and classic yoga.</p><a routerLink="/services" [queryParams]="{category:'MOVE'}">Explore movement →</a></div></article>
+      <article class="experience-category category-reflect"><img src="assets/images/wellness/purpose-journal.jpg" alt="Journal and tea in warm natural light"><div><span>02 · MINDFULNESS</span><h2>Reflect</h2><p>Make room for stillness through guided mindfulness, journaling, and thoughtful self-inquiry.</p><a routerLink="/services" [queryParams]="{category:'REFLECT'}">Explore reflection →</a></div></article>
+      <article class="experience-category category-restore"><img src="assets/images/wellness/purpose-hero.jpg" alt="Quiet restorative wellness space"><div><span>03 · RESTORATION</span><h2>Restore &amp; Explore</h2><p>Restore your rhythm with restorative care, onsen-inspired rituals, forest bathing, and SUP yoga.</p><a routerLink="/services" [queryParams]="{category:'RESTORE_EXPLORE'}">Explore restoration →</a></div></article>
+    </section>
+    <section *ngIf="page === 'services' && selectedCategory" class="category-service-list">
+      <div class="category-toolbar"><a routerLink="/home" class="page-action">← Home</a><a routerLink="/services" class="page-action">← Back to categories</a></div>
+      <h2>{{ categoryTitle() }}</h2><p class="category-intro">Choose an experience within {{ categoryTitle() | lowercase }}.</p>
+      <div class="card-grid"><article *ngFor="let service of visibleServices"><span>{{ service.durationMinutes }} MINUTES</span><h2>{{ service.name }}</h2><p>{{ service.description }}</p><p class="service-location">{{ service.location || 'Location to be confirmed' }}</p><a *ngIf="service.googleMapsUrl" [href]="service.googleMapsUrl" target="_blank" rel="noopener noreferrer">Open location in Google Maps →</a><a routerLink="/reservations">Reserve a session →</a></article><p *ngIf="!visibleServices.length" class="loading">No services have been assigned to this category yet.</p></div>
     </section>
 
     <section *ngIf="page === 'locations'" class="access-grid location-grid">
       <article *ngFor="let service of services"><span>{{ service.durationMinutes }} MINUTES</span><h2>{{ service.name }}</h2><p>{{ service.location || 'Location to be confirmed' }}</p><a *ngIf="service.googleMapsUrl" [href]="service.googleMapsUrl" target="_blank" rel="noopener noreferrer">Open in Google Maps →</a><small *ngIf="!service.googleMapsUrl">Map link coming soon</small></article>
       <p *ngIf="!services.length" class="loading">Loading locations…</p>
+    </section>
+
+    <section *ngIf="page === 'reflections'" class="reflection-layout">
+      <div class="reflection-image"><img src="assets/images/wellness/purpose-journal.jpg" alt="Journal and tea in warm natural light"></div>
+      <div class="reflection-copy"><span class="kicker">ZVYN JOURNAL</span><h2>Small pauses.<br><em>Lasting shifts.</em></h2><p>Reflections on movement, restoration, mindfulness, and the everyday rituals that help you return to yourself.</p><a class="gold-button" routerLink="/contact">Share your intention →</a></div>
     </section>
 
     <section *ngIf="page === 'contact'" class="contact-layout">
