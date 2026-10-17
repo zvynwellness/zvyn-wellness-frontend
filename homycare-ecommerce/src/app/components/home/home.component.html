@@ -9,9 +9,9 @@
   </div>
 </section>
 <section class="experience-tiles" aria-label="Wellness experiences">
-  <article class="experience-tile tile-move"><div class="tile-content"><h2>Move</h2><a routerLink="/services" aria-label="Explore movement experiences">→</a></div></article>
-  <article class="experience-tile tile-reflect"><div class="tile-content"><h2>Reflect</h2><a routerLink="/services" aria-label="Explore reflection experiences">→</a></div></article>
-  <article class="experience-tile tile-restore"><div class="tile-content"><h2>Restore &amp; Explore</h2><a routerLink="/services" aria-label="Explore restorative experiences">→</a></div></article>
+  <article class="experience-tile tile-move"><div class="tile-content"><h2>Move</h2><a routerLink="/services" [queryParams]="{category:'MOVE'}" aria-label="Explore movement services">→</a></div></article>
+  <article class="experience-tile tile-reflect"><div class="tile-content"><h2>Reflect</h2><a routerLink="/services" [queryParams]="{category:'REFLECT'}" aria-label="Explore reflection services">→</a></div></article>
+  <article class="experience-tile tile-restore"><div class="tile-content"><h2>Restore &amp; Explore</h2><a routerLink="/services" [queryParams]="{category:'RESTORE_EXPLORE'}" aria-label="Explore restorative services">→</a></div></article>
 </section>
 <section class="services" id="services">
   <div class="section-heading"><h2>Care, made personal.</h2><p>Every session is personalized, unhurried, and responsive to what you need that day.</p></div>
