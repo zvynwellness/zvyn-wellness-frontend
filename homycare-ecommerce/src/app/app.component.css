@@ -55,3 +55,10 @@
   .pricing-list article{grid-template-columns:1fr;gap:8px}
   .price{text-align:left}
 }
+
+/* Keep the contact/footer content inside narrow phone viewports. */
+@media(max-width:850px){
+  .site-footer{width:100%;max-width:100%;overflow:hidden;padding-left:20px;padding-right:20px}
+  .site-footer>div,.site-footer p{min-width:0;max-width:100%}
+  .site-footer a{overflow-wrap:anywhere;word-break:break-word}
+}
