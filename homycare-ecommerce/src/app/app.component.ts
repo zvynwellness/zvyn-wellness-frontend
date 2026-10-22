@@ -16,6 +16,7 @@ export class AppComponent implements OnInit {
   authError = '';
   authMessage = '';
   submitting = false;
+  mobileNavOpen = false;
 
   constructor(public auth: AuthService, private router: Router) { }
 

@@ -26,3 +26,32 @@
 .account-actions button{font-size:14px;letter-spacing:.11em}
 @media(max-width:1050px){.site-header nav{gap:20px}.site-header nav a{font-size:14px}}
 @media(max-width:850px){.site-header{height:78px}.brand-mark{width:42px;height:42px;font-size:27px}.brand strong{font-size:29px}.brand small{font-size:8px}.account-actions button{font-size:12px}}
+
+/* Mobile navigation: keep the header compact while making every destination reachable. */
+.menu-toggle{display:none;flex:0 0 auto;width:42px;height:42px;padding:10px;border:1px solid #d8c49e;color:#8c6427}
+.menu-toggle span{display:block;height:1px;background:currentColor;margin:5px 0;transition:transform .2s ease}
+@media(max-width:850px){
+  .site-header{position:sticky;min-height:78px;height:auto;flex-wrap:wrap;gap:10px}
+  .menu-toggle{display:block;order:3}
+  .site-header nav{display:none;order:4;flex-basis:100%;width:100%;padding:8px 0 12px;border-top:1px solid #e3d7c3}
+  .site-header nav.mobile-open{display:flex;flex-direction:column;gap:0}
+  .site-header nav a{padding:13px 8px;font-size:13px;letter-spacing:.05em;border:0;border-bottom:1px solid #eee6d8!important}
+  .site-header nav a:last-child{border-bottom:0!important}
+  .account-actions{margin-left:auto}
+  .signed-in span{display:none}
+}
+@media(max-width:420px){
+  .site-header{padding:0 14px}
+  .brand strong{font-size:25px}
+  .brand-mark{width:38px;height:38px;font-size:24px}
+  .account-actions button{font-size:10px}
+  .hero-copy-inner{padding-left:20px;padding-right:20px}
+  .hero h1{font-size:43px;letter-spacing:-.045em}
+  .hero .intro{font-size:14px}
+  .hero .button{width:100%;padding-left:18px;padding-right:18px}
+  .experience-tiles{padding-left:14px;padding-right:14px}
+  .purpose,.services,.pricing{padding-left:18px;padding-right:18px}
+  .service-grid article{padding-left:18px;padding-right:18px}
+  .pricing-list article{grid-template-columns:1fr;gap:8px}
+  .price{text-align:left}
+}
