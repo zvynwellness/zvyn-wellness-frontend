@@ -2,7 +2,7 @@
   <div class="hero-copy">
     <div class="hero-copy-inner">
       <p class="eyebrow">WELLNESS JOURNEYS · REAL CONNECTIONS</p>
-      <h1>Wellness,<br>inspired <em>by place.</em></h1>
+      <h1>Wellness,<br>inspired <em>by purpose.</em></h1>
       <p class="intro">Move with intention. Reflect deeply.<br>Restore through nature.</p>
       <div class="hero-actions"><a class="button button-outline" routerLink="/purpose">Our philosophy <span>→</span></a><a class="button button-gold" routerLink="/services">Explore experiences <span>→</span></a></div>
     </div>
@@ -14,17 +14,17 @@
   <article class="experience-tile tile-restore"><div class="tile-content"><h2>Restore &amp; Explore</h2><a routerLink="/services" [queryParams]="{category:'RESTORE_EXPLORE'}" aria-label="Explore restorative services">→</a></div></article>
 </section>
 <section class="services" id="services">
-  <div class="section-heading"><h2>Care, made personal</h2><p>Every session is personalized, unhurried, and responsive to what you need that day.</p></div>
+  <div class="section-heading"><h2>Recommended by the ZVyn Community</h2><p>Discover the experiences our community loves and recommends most.</p></div>
   <div class="service-grid">
     <article *ngFor="let service of monthlyServices; let i = index">
       <div class="service-top"><span>{{ serviceNumber(i) }}</span><span>{{ service.durationMinutes }} MIN</span></div>
       <div class="service-symbol" [class.symbol-two]="i === 1" [class.symbol-three]="i === 2"><i></i></div>
       <h3>{{ service.serviceName }}</h3><p>{{ service.description }}</p>
       <p>{{ service.scheduledDateTime | date:'medium' }}<span *ngIf="service.instructorName"> · {{ service.instructorName }}</span><br><a *ngIf="service.googleMapsUrl" [href]="service.googleMapsUrl" target="_blank" rel="noopener noreferrer">{{ service.location }} ↗</a><span *ngIf="!service.googleMapsUrl">{{ service.location }}</span> · {{ service.priceAmount == null ? 'Price on request' : (service.currency + ' ' + service.priceAmount) }}</p>
-      <a routerLink="/services">Discover this service <span>↗</span></a>
     </article>
     <p class="empty-services" *ngIf="!monthlyServices.length">The Admin has not selected this month’s featured services yet.</p>
   </div>
+  <div style="text-align:right;margin-top:20px"><a class="text-link" routerLink="/services">Discover services <span>↗</span></a></div>
 </section>
 
 <section class="pricing" id="pricing">

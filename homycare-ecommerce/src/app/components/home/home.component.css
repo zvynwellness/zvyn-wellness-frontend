@@ -92,8 +92,7 @@
 .tile-content h2{font-size:34px}
 .purpose h2,.section-heading h2,.pricing h2{font-size:clamp(34px,3.8vw,54px)}
 .purpose-copy>p{font-size:17px;line-height:1.6}
-.pricing-list h3{font-size:26px}
 .services{padding-top:55px;padding-bottom:55px}
-.services .section-heading>p{white-space:nowrap}
+.services .section-heading>p{white-space:nowrap;text-align:center;margin-right:12%}
 @media(max-width:850px){.services .section-heading>p{white-space:normal}}
 @media(max-width:600px){.hero h1{font-size:48px}.hero .intro{font-size:15px}.tile-content h2{font-size:30px}.purpose h2,.section-heading h2,.pricing h2{font-size:38px}}
