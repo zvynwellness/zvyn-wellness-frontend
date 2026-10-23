@@ -24,7 +24,6 @@ body{
 
 html{scroll-behavior:smooth}
 body{background:#f7f2e8;color:#29251f}
-@media(min-width:851px){app-home .pricing{grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important}}
 @media(max-width:850px){app-home .pricing,app-home .pricing-intro,app-home .pricing-list,app-home .pricing-list article{min-width:0;width:100%;max-width:100%}app-home .pricing-list article{grid-template-columns:1fr!important;box-sizing:border-box;padding-left:0!important;padding-right:0!important}app-home .pricing-list article.featured{border-left:0}app-home .price{text-align:left}app-home .pricing-list article>*{min-width:0;max-width:100%}}
 /* ZVyn typography: a refined editorial serif system with an old-money feel. */
 body,
