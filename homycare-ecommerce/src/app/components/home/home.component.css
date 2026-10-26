@@ -96,3 +96,38 @@
 .services .section-heading>p{white-space:nowrap;text-align:center;margin-right:12%}
 @media(max-width:850px){.services .section-heading>p{white-space:normal}}
 @media(max-width:600px){.hero h1{font-size:48px}.hero .intro{font-size:15px}.tile-content h2{font-size:30px}.purpose h2,.section-heading h2,.pricing h2{font-size:38px}}
+
+/* Keep the homepage conversation card fully inside narrow mobile viewports. */
+@media(max-width:850px){
+  .contact-section .single-offering{
+    display:grid;
+    grid-template-columns:1fr;
+    width:100%;
+    min-width:0;
+    box-sizing:border-box;
+    gap:18px;
+    padding:22px 18px;
+  }
+  .contact-section .single-offering>div{
+    width:100%;
+    min-width:0;
+    max-width:100%;
+  }
+  .contact-section .single-offering p{
+    max-width:100%;
+    overflow-wrap:anywhere;
+  }
+  .contact-section .single-offering .price{
+    width:100%;
+    min-width:0;
+    text-align:left;
+  }
+  .contact-section .single-offering .price-contact{
+    display:block;
+    width:100%;
+    max-width:100%;
+    box-sizing:border-box;
+    text-align:left;
+    white-space:normal;
+  }
+}
