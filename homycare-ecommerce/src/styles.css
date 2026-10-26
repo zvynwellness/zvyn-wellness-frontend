@@ -25,7 +25,7 @@ body{
 html{scroll-behavior:smooth}
 body{background:#f7f2e8;color:#29251f}
 @media(max-width:850px){app-home .pricing,app-home .pricing-intro,app-home .pricing-list,app-home .pricing-list article{min-width:0;width:100%;max-width:100%}app-home .pricing-list article{grid-template-columns:1fr!important;box-sizing:border-box;padding-left:0!important;padding-right:0!important}app-home .pricing-list article.featured{border-left:0!important}app-home .price{justify-self:start;text-align:left!important;width:100%}app-home .pricing-list article>*{min-width:0;max-width:100%;width:100%}app-home .contact-section .price-contact{max-width:100%;white-space:normal;text-align:left}}
-@media(min-width:851px){app-home .contact-section{padding-right:0!important}app-home .contact-section .pricing-list{width:auto!important;margin-right:0!important;position:static;right:auto}}
+@media(min-width:851px){app-home .contact-section{padding-left:max(3vw,40px)!important;padding-right:0!important}app-home .contact-section .pricing-list{width:auto!important;margin-right:0!important;position:static;right:auto}}
 /* ZVyn typography: a refined editorial serif system with an old-money feel. */
 body,
 button,
