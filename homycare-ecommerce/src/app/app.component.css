@@ -2,6 +2,7 @@
 .brand,.brand:hover,.brand:focus,.site-header nav a,.site-header nav a:hover,.site-header nav a:focus,.site-header nav a.active{ text-decoration:none!important; border-bottom:0!important; }
 .site-footer{grid-template-columns:1.4fr 1fr;gap:34px;padding:38px 6vw 58px}.site-footer>div{gap:7px}.site-footer .brand{margin-bottom:8px}.site-footer p{margin:0}.copyright{bottom:18px}
 .site-footer a,.site-footer a:hover,.site-footer a:focus{text-decoration:none!important;border-bottom:0!important}
+.site-footer>div:first-child{align-items:flex-start}.site-footer>div:first-child .brand-light{display:flex;width:max-content}.site-footer>div:first-child p{display:block;width:100%;margin:0}
 @media(max-width:850px){.site-footer{grid-template-columns:1fr;padding:34px 24px 58px}}
 
 /* Larger, quietly luxurious navigation typography. */
