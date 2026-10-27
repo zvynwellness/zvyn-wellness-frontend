@@ -23,10 +23,28 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.auth.restoreAccount();
+    // Let the router own scroll state instead of restoring the previous
+    // document position when a mobile browser navigates back.
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
     this.router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe(() => {
-      // Explicitly reset the document scroll for client-side route changes.
-      // This keeps mobile section pages from inheriting the previous page's position.
-      window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+      // Wait until Angular has rendered the new route. This also wins over the
+      // browser's history scroll restoration on mobile Safari/Chrome.
+      this.resetPageScroll();
+    });
+  }
+
+  private resetPageScroll(): void {
+    const reset = () => {
+      window.scrollTo(0, 0);
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+    };
+    reset();
+    requestAnimationFrame(() => {
+      reset();
+      requestAnimationFrame(reset);
     });
   }
 

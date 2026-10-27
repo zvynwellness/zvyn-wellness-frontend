@@ -65,7 +65,10 @@ const routes: Routes = [
     AdminDashboardComponent
   ],
   imports: [
-    RouterModule.forRoot(routes, { anchorScrolling: 'enabled', scrollPositionRestoration: 'enabled' }),
+    // Pages in this site should always open at their own header. Angular's
+    // automatic history restoration can otherwise put mobile visitors back at
+    // the previous page's scroll position after navigating back.
+    RouterModule.forRoot(routes, { anchorScrolling: 'enabled', scrollPositionRestoration: 'disabled' }),
     BrowserModule,
     FormsModule,
     HttpClientModule,
