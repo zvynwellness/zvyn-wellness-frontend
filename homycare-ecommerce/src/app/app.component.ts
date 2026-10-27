@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from './services/auth.service';
-import { Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -20,7 +21,14 @@ export class AppComponent implements OnInit {
 
   constructor(public auth: AuthService, private router: Router) { }
 
-  ngOnInit(): void { this.auth.restoreAccount(); }
+  ngOnInit(): void {
+    this.auth.restoreAccount();
+    this.router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe(() => {
+      // Explicitly reset the document scroll for client-side route changes.
+      // This keeps mobile section pages from inheriting the previous page's position.
+      window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+    });
+  }
 
   openAuth(mode: 'login'): void {
     this.authMode = mode;
